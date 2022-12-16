@@ -86,3 +86,9 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+// calculate number of months by measuring length of nested array
+// for the total profit, calculate the sum of all months combined
+// divide the total by the number of months to find average
+// find the greatest increase and decrease and store them in variables
+// show the results in the console
