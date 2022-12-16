@@ -91,6 +91,7 @@ var finances = [
 var totalMonths = finances.length;
 var profit = [];
 var totalProfit = null;
+var average = null;
 // for the total profit, calculate the sum of all months combined
 for (let finance of finances) {
     profit.push(finance[1]);
@@ -101,5 +102,7 @@ for (let finance of finances) {
   }
   console.log(totalProfit);
 // divide the total by the number of months to find average
+average = (totalProfit / totalMonths).toFixed(2);
+console.log(average)
 // find the greatest increase and decrease and store them in variables
 // show the results in the console
