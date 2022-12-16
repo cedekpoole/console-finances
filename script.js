@@ -105,4 +105,17 @@ for (let finance of finances) {
 average = (totalProfit / totalMonths).toFixed(2);
 console.log(average)
 // find the greatest increase and decrease and store them in variables
+var max = Math.max(...profit);
+var min = Math.min(...profit);
+
+for (let finance of finances) {
+    if (max === finance[1]) {
+      highestProfit += finance[1];
+      highestDate += finance[0];
+    }
+    if (min === finance[1]) {
+      lowestProfit += finance[1];
+      lowestDate += finance[0];
+    }
+  }
 // show the results in the console
