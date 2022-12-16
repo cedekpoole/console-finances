@@ -105,8 +105,8 @@ for (let finance of finances) {
 for (let p of profit) {
   totalProfit += p;
 }
-// divide the total by the number of months to find average
-average = (totalProfit / totalMonths).toFixed(2);
+// divide the total by the number of months - 1 to find average
+average = (totalProfit / (totalMonths - 1)).toFixed(2);
 
 // find the greatest increase and decrease and store them in variables
 var max = Math.max(...profit);
