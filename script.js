@@ -90,38 +90,32 @@ var finances = [
 // calculate number of months by measuring length of nested array
 var totalMonths = finances.length;
 var profit = [];
+var dates = [];
 var totalProfit = null;
-var average = null;
-var highestProfit = 0;
-var lowestProfit = 0;
-var highestDate = "";
-var lowestDate = "";
+var changeTotal = 0;
 
 // for the total profit, calculate the sum of all months combined
+//separate the two dimensional array into two separate arrays
 for (let finance of finances) {
   profit.push(finance[1]);
+  dates.push(finance[0]);
 }
 
 for (let p of profit) {
   totalProfit += p;
 }
-// divide the total by the number of months - 1 to find average
-average = (totalProfit / (totalMonths - 1)).toFixed(2);
 
-// find the greatest increase and decrease and store them in variables
-var max = Math.max(...profit);
-var min = Math.min(...profit);
-
-for (let finance of finances) {
-  if (max === finance[1]) {
-    highestProfit += finance[1];
-    highestDate += finance[0];
-  }
-  if (min === finance[1]) {
-    lowestProfit += finance[1];
-    lowestDate += finance[0];
-  }
+// track what the total change in profits is from month to month and then find the average
+// put all changes month to month into an array to find greatest increase/decrease in profit
+var changesArray = [];
+for (i = 1; i < totalMonths; i++) {
+  changeTotal += profit[i] - profit[i - 1];
+  changesArray.push(profit[i] - profit[i - 1]);
 }
+
+// (Total/total number of changes) ===> total change/(months - 1)
+var average = (changeTotal / (totalMonths - 1)).toFixed(2);
+
 // show the results in the console
 console.log(
   `Financial Analysis \n------------------- \nTotal Months: ${totalMonths} \nTotal: $${totalProfit} \nAverage Change: $${average} \nGreatest Increase in Profits: ${highestDate} ($${highestProfit}) \nGreatest Decrease in Profits: ${lowestDate} ($${lowestProfit})`
