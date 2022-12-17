@@ -116,7 +116,21 @@ for (i = 1; i < totalMonths; i++) {
 // (Total/total number of changes) ===> total change/(months - 1)
 var average = (changeTotal / (totalMonths - 1)).toFixed(2);
 
-// show the results in the console
+// find the largest and smallest number in the changes array
+var max = Math.max(...changesArray);
+var min = Math.min(...changesArray);
+
+// check which date aligns with the largest/smallest number
+//add 1 to the index to accomodate first month
+var maxDate = changesArray.indexOf(max) + 1;
+var minDate = changesArray.indexOf(min) + 1;
+
+// put the max/min date into a variable
+var maxProfitDate = dates[maxDate];
+var minProfitDate = dates[minDate];
+
+// log the results in the console
 console.log(
-  `Financial Analysis \n------------------- \nTotal Months: ${totalMonths} \nTotal: $${totalProfit} \nAverage Change: $${average} \nGreatest Increase in Profits: ${highestDate} ($${highestProfit}) \nGreatest Decrease in Profits: ${lowestDate} ($${lowestProfit})`
+  `Financial Analysis \n------------------- \nTotal Months: ${totalMonths} \nTotal: $${totalProfit} \nAverage Change: $${average} \nGreatest Increase in Profits: ${maxProfitDate} ($${max}) \nGreatest Decrease in Profits: ${minProfitDate} ($${min})`
 );
+
